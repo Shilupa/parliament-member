@@ -32,7 +32,7 @@ class PartyListAdapter : RecyclerView.Adapter<PartyListAdapter.ViewHolder> (){
         val bundle = Bundle()
         bundle.putString("partyName",partyList.elementAt(position))
         holder.itemView.setOnClickListener {
-            Log.d(TAG, partyList.elementAt(position))
+            //Log.d(TAG, partyList.elementAt(position))
             it.findNavController().navigate(R.id.action_partyListFragment_to_memberListFragment, bundle)
         }
     }

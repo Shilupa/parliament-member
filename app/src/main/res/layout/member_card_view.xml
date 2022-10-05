@@ -15,10 +15,11 @@
             android:padding="10dp">
 
             <ImageView
-                android:id="@+id/member_image"
+                android:contentDescription="@string/app_name"
+                android:id="@+id/memberImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_launcher_foreground"/>
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"

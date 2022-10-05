@@ -28,7 +28,7 @@ class MemberListFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_member_list, container, false)
         val partyName = arguments?.getString("partyName")
-        var memberList = mutableListOf<PmModel>()
+        val memberList = mutableListOf<PmModel>()
         parliamentMemberViewModel = ViewModelProvider(this)[ParliamentMemberViewModel::class.java]
         binding.memberRecyclerView.hasFixedSize()
         binding.memberRecyclerView.layoutManager = LinearLayoutManager(view?.context)
