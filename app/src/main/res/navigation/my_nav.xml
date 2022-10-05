@@ -21,5 +21,17 @@
         <action
             android:id="@+id/action_partyListFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_partyListFragment_to_memberListFragment"
+            app:destination="@id/memberListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/memberListFragment"
+        android:name="fi.metropolia.retrofitparliamentmember.fragments.MemberListFragment"
+        android:label="fragment_member_list"
+        tools:layout="@layout/fragment_member_list" >
+        <action
+            android:id="@+id/action_memberListFragment_to_partyListFragment"
+            app:destination="@id/partyListFragment" />
     </fragment>
 </navigation>

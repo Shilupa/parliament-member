@@ -35,12 +35,7 @@ class PartyListFragment : Fragment() {
         binding.pmListRecyclerView.layoutManager = LinearLayoutManager(view?.context)
         partyListAdapter = PartyListAdapter()
 
-
         parliamentMemberViewModel.getPmList.observe(viewLifecycleOwner){ pmList ->
-         /*   pmList.forEach{
-                Log.d(TAG, it.bornYear.toString())
-                partyList.add(it.party)
-            }*/
             partyListAdapter.setData(pmList)
             binding.pmListRecyclerView.adapter = partyListAdapter
         }

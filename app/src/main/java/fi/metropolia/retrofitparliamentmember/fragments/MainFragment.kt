@@ -29,9 +29,9 @@ class MainFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
-       binding.goToPartyList.setOnClickListener {
-           findNavController().navigate(R.id.action_mainFragment_to_partyListFragment)
-       }
+        binding.goToPartyList.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_partyListFragment)
+        }
         return binding.root
     }
 }
