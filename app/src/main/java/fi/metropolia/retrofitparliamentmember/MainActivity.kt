@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.work.*
 import fi.metropolia.retrofitparliamentmember.databinding.ActivityMainBinding
 import fi.metropolia.retrofitparliamentmember.viewmodel.ParliamentMemberViewModel
@@ -17,18 +19,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        doWork()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.mainFragment) as NavHostFragment
+        navController = navHostFragment.navController
+        doWork()
         parliamentMemberViewModel = ParliamentMemberViewModel(application)
 
         parliamentMemberViewModel.getPmList.observe(this) { it ->
             it.forEach {
                 Log.d(TAG, "${it.first} ${it.personNumber}")
             }
-            binding.name.text = "${it.size}"
+            //binding.name.text = "${it.size}"
         }
     }
 
