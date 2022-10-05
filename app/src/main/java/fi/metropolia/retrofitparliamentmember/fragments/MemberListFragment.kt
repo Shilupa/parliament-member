@@ -14,13 +14,16 @@ import fi.metropolia.retrofitparliamentmember.databinding.FragmentMemberListBind
 import fi.metropolia.retrofitparliamentmember.model.PmModel
 import fi.metropolia.retrofitparliamentmember.viewmodel.ParliamentMemberViewModel
 
-private const val TAG = "MemberList"
+/**
+ * Fragment to display member list of specific party via MemberListAdapter
+ */
 class MemberListFragment : Fragment() {
     companion object {
         private lateinit var parliamentMemberViewModel: ParliamentMemberViewModel
     }
     private lateinit var binding: FragmentMemberListBinding
     private lateinit var memberListAdapter: MemberListAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,13 +31,14 @@ class MemberListFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_member_list, container, false)
         val partyName = arguments?.getString("partyName")
-        val memberList = mutableListOf<PmModel>()
+        val memberList = mutableSetOf<PmModel>()
         parliamentMemberViewModel = ViewModelProvider(this)[ParliamentMemberViewModel::class.java]
         binding.memberRecyclerView.hasFixedSize()
         binding.memberRecyclerView.layoutManager = LinearLayoutManager(view?.context)
 
-        parliamentMemberViewModel.getPmList.observe(viewLifecycleOwner){pmList ->
-            pmList.forEach{
+        // Adding pm to the list if he/she belongs to the party passed from previous fragment
+        parliamentMemberViewModel.getPmList.observe(viewLifecycleOwner){ pmList ->
+            pmList.map{
                 if(it.party == partyName){
                     memberList.add(it)
                 }

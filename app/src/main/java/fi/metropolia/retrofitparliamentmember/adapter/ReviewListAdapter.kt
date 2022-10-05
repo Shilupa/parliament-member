@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import fi.metropolia.retrofitparliamentmember.R
 import fi.metropolia.retrofitparliamentmember.model.Review
 
+/**
+ * Recycler view adapter to review list
+ */
 class ReviewListAdapter(private val reviews: List<Review>) :
     RecyclerView.Adapter<ReviewListAdapter.ViewHolder>() {
 

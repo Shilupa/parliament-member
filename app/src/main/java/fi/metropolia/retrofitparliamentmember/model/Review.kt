@@ -3,6 +3,9 @@ package fi.metropolia.retrofitparliamentmember.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/**
+* Model of review database
+*/
 @Entity
 data class Review(
     @PrimaryKey(autoGenerate = true)

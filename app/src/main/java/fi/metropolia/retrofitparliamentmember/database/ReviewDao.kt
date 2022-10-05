@@ -7,6 +7,9 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import fi.metropolia.retrofitparliamentmember.model.Review
 
+/**
+ * All the queries for review database is done here
+ */
 @Dao
 interface ReviewDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)

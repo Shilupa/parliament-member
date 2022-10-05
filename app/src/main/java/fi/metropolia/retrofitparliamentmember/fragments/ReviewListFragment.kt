@@ -14,7 +14,9 @@ import fi.metropolia.retrofitparliamentmember.adapter.ReviewListAdapter
 import fi.metropolia.retrofitparliamentmember.databinding.FragmentReviewListBinding
 import fi.metropolia.retrofitparliamentmember.viewmodel.ReviewViewModel
 
-
+/**
+ * Fragment to display review via ReviewListAdapter
+ */
 class ReviewListFragment : Fragment() {
     companion object {
         private lateinit var reviewViewModel: ReviewViewModel
@@ -29,9 +31,9 @@ class ReviewListFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_review_list, container, false)
         val personId = arguments?.getInt("personId")
-        Log.d("personId",personId.toString())
 
         reviewViewModel = ViewModelProvider(this)[ReviewViewModel::class.java]
+        // Implementing RecyclerView
         binding.reviewListRecyclerView.hasFixedSize()
         binding.reviewListRecyclerView.layoutManager = LinearLayoutManager(view?.context)
 
