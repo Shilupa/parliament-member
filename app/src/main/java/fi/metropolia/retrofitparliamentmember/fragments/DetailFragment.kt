@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 import fi.metropolia.retrofitparliamentmember.R
@@ -83,6 +84,13 @@ class DetailFragment : Fragment() {
                    }
                }
             }
+        }
+        val bundle = Bundle()
+        if(id != null){
+            bundle.putInt("personId",id)
+        }
+        binding.viewReview.setOnClickListener {
+            findNavController().navigate(R.id.action_detailFragment_to_reviewListFragment, bundle)
         }
         return binding.root
     }

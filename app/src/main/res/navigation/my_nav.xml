@@ -46,16 +46,12 @@
             android:id="@+id/action_detailFragment_to_memberListFragment"
             app:destination="@id/memberListFragment" />
         <action
-            android:id="@+id/action_detailFragment_to_addReviewFragment"
-            app:destination="@id/addReviewFragment" />
+            android:id="@+id/action_detailFragment_to_reviewListFragment"
+            app:destination="@id/reviewListFragment" />
     </fragment>
     <fragment
-        android:id="@+id/addReviewFragment"
-        android:name="fi.metropolia.retrofitparliamentmember.fragments.AddReviewFragment"
-        android:label="fragment_add_review"
-        tools:layout="@layout/fragment_add_review" >
-        <action
-            android:id="@+id/action_addReviewFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
-    </fragment>
+        android:id="@+id/reviewListFragment"
+        android:name="fi.metropolia.retrofitparliamentmember.fragments.ReviewListFragment"
+        android:label="fragment_review_list"
+        tools:layout="@layout/fragment_review_list" />
 </navigation>
