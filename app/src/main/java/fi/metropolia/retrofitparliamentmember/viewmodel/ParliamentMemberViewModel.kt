@@ -6,7 +6,7 @@ import fi.metropolia.retrofitparliamentmember.repository.PmRepository
 
 /**
  * @param application
- * Used for accessing database via PmRepository
+ * Used for accessing pm database via PmRepository
  */
 class ParliamentMemberViewModel(application: Application): AndroidViewModel(application) {
      val getPmList = PmRepository(application).pmListFromDb

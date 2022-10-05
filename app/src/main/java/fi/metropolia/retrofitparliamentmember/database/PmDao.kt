@@ -8,7 +8,7 @@ import androidx.room.Query
 import fi.metropolia.retrofitparliamentmember.model.PmModel
 
 /**
- * All the queries for database is done here
+ * All the queries for pm database is done here
  */
 @Dao
 interface PmDao {

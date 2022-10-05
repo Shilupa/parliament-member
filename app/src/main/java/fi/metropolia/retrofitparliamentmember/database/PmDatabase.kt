@@ -19,6 +19,7 @@ abstract class PmDatabase : RoomDatabase() {
 
         @Synchronized
         fun getInstance(context: Context): PmDatabase {
+            // if the INSTANCE is not null, then returns it, if it is, then creates the database
             if (sInstance == null) {
                 sInstance =
                     Room.databaseBuilder(

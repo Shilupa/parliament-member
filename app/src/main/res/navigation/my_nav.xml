@@ -21,5 +21,37 @@
         <action
             android:id="@+id/action_partyListFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_partyListFragment_to_memberListFragment"
+            app:destination="@id/memberListFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/memberListFragment"
+        android:name="fi.metropolia.retrofitparliamentmember.fragments.MemberListFragment"
+        android:label="fragment_member_list"
+        tools:layout="@layout/fragment_member_list" >
+        <action
+            android:id="@+id/action_memberListFragment_to_partyListFragment"
+            app:destination="@id/partyListFragment" />
+        <action
+            android:id="@+id/action_memberListFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="fi.metropolia.retrofitparliamentmember.fragments.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_memberListFragment"
+            app:destination="@id/memberListFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_reviewListFragment"
+            app:destination="@id/reviewListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reviewListFragment"
+        android:name="fi.metropolia.retrofitparliamentmember.fragments.ReviewListFragment"
+        android:label="fragment_review_list"
+        tools:layout="@layout/fragment_review_list" />
 </navigation>

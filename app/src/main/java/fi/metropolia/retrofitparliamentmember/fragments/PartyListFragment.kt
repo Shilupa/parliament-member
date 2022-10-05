@@ -13,15 +13,15 @@ import fi.metropolia.retrofitparliamentmember.adapter.PartyListAdapter
 import fi.metropolia.retrofitparliamentmember.databinding.FragmentPartyListBinding
 import fi.metropolia.retrofitparliamentmember.viewmodel.ParliamentMemberViewModel
 
-private const val TAG = "PartyList"
+/**
+ * Fragment to dislay partyList via PartyListAdapter
+ */
 class PartyListFragment : Fragment() {
     companion object {
         private lateinit var parliamentMemberViewModel: ParliamentMemberViewModel
     }
     private lateinit var binding: FragmentPartyListBinding
     private lateinit var partyListAdapter: PartyListAdapter
-    // List to store non duplicate party list
-    var partyList = mutableSetOf<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,12 +35,7 @@ class PartyListFragment : Fragment() {
         binding.pmListRecyclerView.layoutManager = LinearLayoutManager(view?.context)
         partyListAdapter = PartyListAdapter()
 
-
         parliamentMemberViewModel.getPmList.observe(viewLifecycleOwner){ pmList ->
-         /*   pmList.forEach{
-                Log.d(TAG, it.bornYear.toString())
-                partyList.add(it.party)
-            }*/
             partyListAdapter.setData(pmList)
             binding.pmListRecyclerView.adapter = partyListAdapter
         }

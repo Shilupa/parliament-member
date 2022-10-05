@@ -31,9 +31,9 @@ class PmRepository(application: Application) : AndroidViewModel(application) {
     init {
         getParliamentMembers()
         // Delete query to clear database
-        /*viewModelScope.launch {
-            pmDatabase.pmDao.deleteAll()
-        }*/
+        //viewModelScope.launch {
+          //  pmDatabase.pmDao.deleteAll()
+        //}
     }
 
     /**
@@ -46,8 +46,8 @@ class PmRepository(application: Application) : AndroidViewModel(application) {
                 _fetchedPmList.value = PmApi.retrofitService.getPmList()
                 // Waits until president list is fetched from internet
                 withContext(Dispatchers.IO) {
-                    _fetchedPmList.value?.forEach {
-                        pmDatabase.pmDao.addPmToDB(it)
+                    _fetchedPmList.value?.forEach { pm ->
+                        pmDatabase.pmDao.addPmToDB(pm)
                     }
                 }
                 Log.d(
