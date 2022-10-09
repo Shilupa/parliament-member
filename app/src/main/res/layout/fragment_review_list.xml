@@ -6,7 +6,8 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.ReviewListFragment">
+        tools:context=".fragments.ReviewListFragment"
+        android:background="@drawable/gradient_background">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/reviewListRecyclerView"

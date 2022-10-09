@@ -13,6 +13,7 @@ import fi.metropolia.retrofitparliamentmember.model.PmModel
 /**
  * Recycler view adapter to display party list
  */
+
 class PartyListAdapter : RecyclerView.Adapter<PartyListAdapter.ViewHolder> (){
     private var partyList = mutableSetOf<String>()
 
