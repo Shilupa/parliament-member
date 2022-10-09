@@ -10,6 +10,4 @@
     <string name="no_minister">Not a minister yet</string>
     <string name="minister">Minister</string>
     <string name="account">No Twitter Account</string>
-    <string name="btn_party_list">View Party List</string>
-    <string name="image_desc">image</string>
 </resources>

@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace 'fi.metropolia.retrofitparliamentmember'
-    compileSdk 33
+    compileSdk 32
 
     defaultConfig {
         applicationId "fi.metropolia.retrofitparliamentmember"
@@ -39,14 +39,14 @@ android {
 
 dependencies {
     def version_retrofit = '2.9.0'
-    def version_moshi = '1.14.0'
+    def version_moshi = '1.13.0'
     def lifecycle_version = "2.5.1"
     def roomVersion = "2.4.3"
     def work_version = "2.7.1"
     def nav_version = "2.5.2"
     def fragment_version = "1.5.3"
 
-    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
