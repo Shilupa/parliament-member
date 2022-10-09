@@ -6,7 +6,6 @@ import androidx.work.Worker
 import androidx.work.WorkerParameters
 import fi.metropolia.retrofitparliamentmember.viewmodel.ParliamentMemberViewModel
 
-
 /**
  * Work Manager implementation
  */

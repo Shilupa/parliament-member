@@ -12,15 +12,29 @@ import fi.metropolia.retrofitparliamentmember.model.PmModel
  */
 @Dao
 interface PmDao {
+    /**
+     * Selecting List of all Parliament members
+     */
     @Query("SELECT * FROM PmModel")
     fun getAll(): LiveData<List<PmModel>>
 
+    /**
+     * @param pm
+     * Adding parliament member to database
+     */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addPmToDB(Pm: PmModel): Long
+    suspend fun addPmToDB(pm: PmModel): Long
 
+    /**
+     * @param hetekeId
+     * Fetching parliament member by their hetekaId
+     */
     @Query("SELECT * FROM PmModel WHERE hetekaId = :hetekeId")
     fun getPmById(hetekeId: Int): LiveData<PmModel>
 
+    /**
+     * Deleting parliament members List from database(Just in case on need)
+     */
     @Query("DELETE FROM PmModel")
     suspend  fun deleteAll()
 }

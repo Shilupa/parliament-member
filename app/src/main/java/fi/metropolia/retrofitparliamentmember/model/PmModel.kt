@@ -6,7 +6,6 @@ import com.squareup.moshi.Json
 
 /**
  * Model of Parliament members database
- * Reference : https://www.geeksforgeeks.org/android-entity-relationship-in-room/
  */
 @Entity
 data class PmModel(
@@ -19,30 +18,3 @@ data class PmModel(
     val minister: Boolean,
     val pictureUrl: String,
 )
-
-/*@Entity(
-    foreignKeys = [ForeignKey(
-        entity = PmModel::class,
-        onDelete = CASCADE,
-        parentColumns = ["hetekaId"],
-        childColumns = ["hetekaId"]
-    )]
-)*/
-/*
-@Entity
-data class PmExtras(
-    val hetekaId: Int,
-    @PrimaryKey
-    val twitter: String,
-    val bornYear: Int,
-    val constituency: String,
-)
-*/
-
-/*
-class PmAndExtras(
-    @Embedded
-    var pm: PmModel? = null,
-    @Relation(parentColumn = "hetekaId", entityColumn = "hetekaId")
-    var extras: PmExtras? = null
-)*/

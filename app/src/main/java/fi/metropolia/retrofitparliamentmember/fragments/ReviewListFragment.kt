@@ -31,12 +31,15 @@ class ReviewListFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_review_list, container, false)
         val personId = arguments?.getInt("personId")
-
+        // Initializing view model
         reviewViewModel = ViewModelProvider(this)[ReviewViewModel::class.java]
         // Implementing RecyclerView
         binding.reviewListRecyclerView.hasFixedSize()
         binding.reviewListRecyclerView.layoutManager = LinearLayoutManager(view?.context)
 
+        /**
+         * Passing review list to the Adapter
+         */
         if (personId != null) {
             reviewViewModel.reviewRepo.getAllReviews(personId).observe(viewLifecycleOwner){
                 reviewListAdapter = ReviewListAdapter(it)

@@ -23,9 +23,11 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface PmApiService {
+    //For pm db
     @GET("seating.json")
     suspend fun getPmList(): List<PmModel>
 
+    // for PmExtras db
     @GET("extras.json")
     suspend fun getPmExtras(): List<PmExtrasModel>
 }

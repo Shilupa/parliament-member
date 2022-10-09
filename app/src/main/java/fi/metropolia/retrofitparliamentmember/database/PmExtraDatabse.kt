@@ -8,12 +8,11 @@ import fi.metropolia.retrofitparliamentmember.model.PmExtrasModel
 import fi.metropolia.retrofitparliamentmember.model.PmModel
 
 /**
- * Instance of Parliament members database
+ * Instance of PmExtras database
  */
 @Database(entities = [(PmExtrasModel::class)], version = 1, exportSchema = false)
 abstract class PmExtraDatabase : RoomDatabase() {
     abstract val pmExtrasDao: PmExtrasDao
-
 
     // context comes from MyApp, may also be provided as parameter
     companion object {

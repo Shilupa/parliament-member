@@ -30,13 +30,20 @@ class MemberListFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_member_list, container, false)
+        // Storing data passed from previous view
         val partyName = arguments?.getString("partyName")
+        // Creating mutable list store no duplicates list of parliament members
         val memberList = mutableSetOf<PmModel>()
+
+        // Initializing view model
         parliamentMemberViewModel = ViewModelProvider(this)[ParliamentMemberViewModel::class.java]
         binding.memberRecyclerView.hasFixedSize()
         binding.memberRecyclerView.layoutManager = LinearLayoutManager(view?.context)
 
-        // Adding pm to the list if he/she belongs to the party passed from previous fragment
+        /**
+         * Adding pm to the list if he/she belongs to the party passed from previous fragment
+         * Passing memberList after adding member to the Adapter
+         */
         parliamentMemberViewModel.getPmList.observe(viewLifecycleOwner){ pmList ->
             pmList.map{
                 if(it.party == partyName){

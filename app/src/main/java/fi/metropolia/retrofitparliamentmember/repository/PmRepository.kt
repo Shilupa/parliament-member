@@ -17,8 +17,8 @@ private const val TAG = "pmRepo"
 
 /***
  * @param application
- * Used for fetching pm data from internet
- * Used for accessing pm database: adding data, deleting data and fetching data
+ * Used for fetching pm and pmExtras data from internet
+ * Used for accessing pm and pmExtras database: adding data, deleting data and fetching data
  */
 class PmRepository(application: Application) : AndroidViewModel(application) {
     // Reference to database
@@ -43,8 +43,8 @@ class PmRepository(application: Application) : AndroidViewModel(application) {
     }
 
     /**
-     *  Gets the list of pm from internet
-     *  Then adds the pm to the database
+     *  Gets the list of pm and pmExtras from internet
+     *  Then adds them to their respective database
      */
     private fun getParliamentMembers() {
         viewModelScope.launch {
@@ -70,9 +70,17 @@ class PmRepository(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    /**
+     * @param hetekaId
+     * Fetching parliament member from database by hetekaId
+     */
     fun getPmByPmId(hetekaId: Int): LiveData<PmModel> =
         pmDatabase.pmDao.getPmById(hetekaId)
 
+    /**
+     * @param hetekaId
+     * Fetching pmExtras from database by hetekaId
+     */
     fun getPmExtrasByPmId(hetekaId: Int): LiveData<PmExtrasModel> =
         pmExtrasDb.pmExtrasDao.getPmExtras(hetekaId)
 }
