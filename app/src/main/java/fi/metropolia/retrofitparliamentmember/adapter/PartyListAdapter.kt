@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import fi.metropolia.retrofitparliamentmember.R
 import fi.metropolia.retrofitparliamentmember.model.PmModel
 
-
 /**
  * Recycler view adapter to display party list
  */

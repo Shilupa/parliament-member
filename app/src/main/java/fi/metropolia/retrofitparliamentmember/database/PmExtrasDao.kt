@@ -7,10 +7,14 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import fi.metropolia.retrofitparliamentmember.model.PmExtrasModel
 
+/**
+ * All the queries for pmExtras database is done here
+ */
 @Dao
 interface PmExtrasDao{
     /**
-     * @return pmExtras
+     * @param hetekaId
+     * Fetching parliament member extra details by hetekaId
      */
     @Query("SELECT * FROM PmExtrasModel WHERE hetekaId = :hetekaId")
     fun getPmExtras(hetekaId: Int): LiveData<PmExtrasModel>

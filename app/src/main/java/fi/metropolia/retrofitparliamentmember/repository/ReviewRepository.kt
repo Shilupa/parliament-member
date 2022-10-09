@@ -28,7 +28,7 @@ class ReviewRepository(application: Application): AndroidViewModel(application) 
 
     /**
      * @param personNumber
-     * Fetching all reviews for certain parliament meber filtered by personNumber
+     * Fetching all reviews for certain parliament member filtered by personNumber
      */
     fun getAllReviews(personNumber: Int): LiveData<List<Review>> {
         return reviewDao.getAllReview(personNumber)

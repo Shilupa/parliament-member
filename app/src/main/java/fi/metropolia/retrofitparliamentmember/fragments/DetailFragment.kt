@@ -2,7 +2,6 @@ package fi.metropolia.retrofitparliamentmember.fragments
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +17,7 @@ import fi.metropolia.retrofitparliamentmember.model.Review
 import fi.metropolia.retrofitparliamentmember.viewmodel.ParliamentMemberViewModel
 import fi.metropolia.retrofitparliamentmember.viewmodel.ReviewViewModel
 
-
+// Parliament members image url base link
 private const val BASE_URL = "https://avoindata.eduskunta.fi/"
 
 /**
@@ -37,8 +36,10 @@ class DetailFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
+        // Storing data, passed from previous fragment
         val id = arguments?.getInt("personId")
 
+        // Initializing view models
         parliamentMemberViewModel = ViewModelProvider(this)[ParliamentMemberViewModel::class.java]
         reviewViewModel = ViewModelProvider(this)[ReviewViewModel::class.java]
 
@@ -46,15 +47,7 @@ class DetailFragment : Fragment() {
         val pmDetails = id?.let { parliamentMemberViewModel.pmRepository.getPmByPmId(it) }
         val pmExtras = id?.let { parliamentMemberViewModel.pmRepository.getPmExtrasByPmId(id)}
 
-        pmExtras?.observe(viewLifecycleOwner){
-           binding.bornYear.text = it.bornYear.toString()
-            if(it.twitter == ""){
-                binding.twitterLink.text = "No Twitter Account"
-            }else{
-                binding.twitterLink.text = it.twitter
-            }
-            binding.region.text = it.constituency
-        }
+        // Displaying parliament members details in UI
         pmDetails?.observe(viewLifecycleOwner) {
             val url: String = BASE_URL + it.pictureUrl
             Glide.with(this).load(url).into(binding.pmImage)
@@ -68,6 +61,18 @@ class DetailFragment : Fragment() {
             binding.lastName.text = it.lastname
         }
 
+        // Displaying parliament members extra details in UI
+        pmExtras?.observe(viewLifecycleOwner){
+            binding.bornYear.text = it.bornYear.toString()
+            if(it.twitter == ""){
+                binding.twitterLink.text = "No Twitter Account"
+            }else{
+                binding.twitterLink.text = it.twitter
+            }
+            binding.region.text = it.constituency
+        }
+
+        // Review is added through onClickListener when required conditions are met
         binding.submit.setOnClickListener {
             val rating = binding.rating.text.toString()
             val comment = binding.comment.text.toString()
@@ -104,7 +109,7 @@ class DetailFragment : Fragment() {
         if (id != null) {
             bundle.putInt("personId", id)
         }
-        // Navigation to review fragment
+        // Navigation to review fragment to view the review list of certain parliament member
         binding.viewReview.setOnClickListener {
             findNavController().navigate(R.id.action_detailFragment_to_reviewListFragment, bundle)
         }

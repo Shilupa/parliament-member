@@ -29,12 +29,14 @@ class PartyListFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding =  DataBindingUtil.inflate(inflater, R.layout.fragment_party_list, container, false)
+        //Initializing view model
         parliamentMemberViewModel = ViewModelProvider(this)[ParliamentMemberViewModel::class.java]
         // Implementing RecyclerView
         binding.pmListRecyclerView.hasFixedSize()
         binding.pmListRecyclerView.layoutManager = LinearLayoutManager(view?.context)
         partyListAdapter = PartyListAdapter()
 
+        // Passing pmList to the Adapter
         parliamentMemberViewModel.getPmList.observe(viewLifecycleOwner){ pmList ->
             partyListAdapter.setData(pmList)
             binding.pmListRecyclerView.adapter = partyListAdapter

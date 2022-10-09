@@ -12,9 +12,17 @@ import fi.metropolia.retrofitparliamentmember.model.Review
  */
 @Dao
 interface ReviewDao {
+    /**
+     * @param review
+     * Adding pm review to the database
+     */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addReview(review: Review)
 
+    /**
+     * @param personId
+     * Fetching reviews from database by parliament member personId(hetekaID)
+     */
     @Query("select * from Review Where personId = :personId")
     fun getAllReview(personId: Int): LiveData<List<Review>>
 }
