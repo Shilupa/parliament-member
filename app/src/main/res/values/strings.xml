@@ -9,4 +9,8 @@
     <string name="view">View Review</string>
     <string name="no_minister">Not a minister yet</string>
     <string name="minister">Minister</string>
+    <string name="account">No Twitter Account</string>
+    <string name="view_party_list">View Party List</string>
+    <string name="parliament_house">parliament_house</string>
+    <string name="parliament">parliament</string>
 </resources>
