@@ -65,7 +65,7 @@ class DetailFragment : Fragment() {
         pmExtras?.observe(viewLifecycleOwner){
             binding.bornYear.text = it.bornYear.toString()
             if(it.twitter == ""){
-                binding.twitterLink.text = "No Twitter Account"
+                binding.twitterLink.text = getString(R.string.account)
             }else{
                 binding.twitterLink.text = it.twitter
             }

@@ -9,4 +9,5 @@
     <string name="view">View Review</string>
     <string name="no_minister">Not a minister yet</string>
     <string name="minister">Minister</string>
+    <string name="account">No Twitter Account</string>
 </resources>
