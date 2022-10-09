@@ -19,6 +19,7 @@ import java.util.concurrent.TimeUnit
  */
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,7 +36,7 @@ class MainFragment : Fragment() {
 
     /**
      * Implementing work manager
-     * Data is fetch and added periodically to db every 1 day
+     * Data is fetch and added periodically to db every 15 minutes
      */
     private fun doWork() {
         val constraints = Constraints.Builder()
@@ -43,7 +44,7 @@ class MainFragment : Fragment() {
             .build()
 
         val myWorkRequest = PeriodicWorkRequest.Builder(
-            MyWorker::class.java, 1, TimeUnit.DAYS
+            MyWorker::class.java, 15, TimeUnit.MINUTES
         )
             .setConstraints(constraints).addTag("do_work")
             .build()
