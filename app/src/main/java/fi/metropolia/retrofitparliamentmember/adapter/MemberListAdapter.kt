@@ -27,18 +27,18 @@ class MemberListAdapter(private val memberList: MutableSet<PmModel>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.firstName.text = memberList.elementAt(position).first
-        holder.lastName.text = memberList.elementAt(position).last
-        holder.constituency.text = memberList.elementAt(position).constituency
+        holder.firstName.text = memberList.elementAt(position).firstname
+        holder.lastName.text = memberList.elementAt(position).lastname
+        holder.constituency.text = memberList.elementAt(position).seatNumber.toString()
         holder.partyName.text = memberList.elementAt(position).party
 
-        val imageUrl: String = BASE_URL + memberList.elementAt(position).picture
+        val imageUrl: String = BASE_URL + memberList.elementAt(position).pictureUrl
         Glide.with(holder.itemView).load(imageUrl).into(holder.image)
 
         val bundle = Bundle()
-        bundle.putInt("personId", memberList.elementAt(position).personNumber)
+        bundle.putInt("personId", memberList.elementAt(position).hetekaId)
 
-        // Navigation to next fragment along with passing value as bundle
+        //Navigation to next fragment along with passing value as bundle
         holder.itemView.setOnClickListener {
             it.findNavController()
                 .navigate(R.id.action_memberListFragment_to_detailFragment, bundle)

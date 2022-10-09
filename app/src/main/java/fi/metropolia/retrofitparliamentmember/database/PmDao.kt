@@ -18,6 +18,9 @@ interface PmDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addPmToDB(Pm: PmModel): Long
 
+    @Query("SELECT * FROM PmModel WHERE hetekaId = :hetekeId")
+    fun getPmById(hetekeId: Int): LiveData<PmModel>
+
     @Query("DELETE FROM PmModel")
     suspend  fun deleteAll()
 }

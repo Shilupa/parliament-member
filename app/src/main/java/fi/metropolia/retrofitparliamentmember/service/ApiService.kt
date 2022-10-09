@@ -2,6 +2,7 @@ package fi.metropolia.retrofitparliamentmember.service
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import fi.metropolia.retrofitparliamentmember.model.PmExtrasModel
 import fi.metropolia.retrofitparliamentmember.model.PmModel
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -22,8 +23,11 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface PmApiService {
-    @GET("mps.json")
+    @GET("seating.json")
     suspend fun getPmList(): List<PmModel>
+
+    @GET("extras.json")
+    suspend fun getPmExtras(): List<PmExtrasModel>
 }
 
 object PmApi {

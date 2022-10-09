@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import fi.metropolia.retrofitparliamentmember.databinding.ActivityMainBinding
+import fi.metropolia.retrofitparliamentmember.viewmodel.ParliamentMemberViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
