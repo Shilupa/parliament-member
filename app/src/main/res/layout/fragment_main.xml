@@ -6,17 +6,49 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".fragments.MainFragment">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient_background"
+            tools:context=".MainActivity">
 
-        <!-- TODO: Update blank fragment layout -->
-        <Button
-            android:id="@+id/goToPartyList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="View Party List"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/parliamentHouse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="144dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/parliament_house"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/image_desc" />
 
+            <ImageView
+                android:id="@+id/parliament"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/parliament"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toTopOf="@+id/parliamentHouse"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                android:contentDescription="@string/image_desc" />
+
+            <Button
+                android:id="@+id/goToPartyList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="132dp"
+                android:text="@string/btn_party_list"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.596"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </layout>
