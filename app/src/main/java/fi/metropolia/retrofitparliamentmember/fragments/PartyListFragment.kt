@@ -14,7 +14,7 @@ import fi.metropolia.retrofitparliamentmember.databinding.FragmentPartyListBindi
 import fi.metropolia.retrofitparliamentmember.viewmodel.ParliamentMemberViewModel
 
 /**
- * Fragment to dislay partyList via PartyListAdapter
+ * Fragment to display partyList via PartyListAdapter
  */
 class PartyListFragment : Fragment() {
     companion object {
