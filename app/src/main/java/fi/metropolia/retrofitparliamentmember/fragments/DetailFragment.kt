@@ -39,8 +39,12 @@ class DetailFragment : Fragment() {
     }
 
     private lateinit var binding: FragmentDetailBinding
+
+    // Live data to store rating values
     private var _pmRating: MutableLiveData<Float?> = MutableLiveData()
     private val pmRating: LiveData<Float?> = _pmRating
+
+    // Setting minimum rating value
     private val minRatingValue = 0.0F
 
     override fun onCreateView(
@@ -69,27 +73,26 @@ class DetailFragment : Fragment() {
             } else {
                 binding.memberType.text = getString(R.string.no_minister)
             }
-            binding.region.text = it.party
-            binding.firstName.text = it.firstname
-            binding.lastName.text = it.lastname
+            binding.region.text = getString(R.string.partyName, it.party)
+            binding.pmName.text = getString(R.string.pmName, it.firstname, it.lastname)
         }
 
         // Displaying parliament members extra details in UI
         pmExtras?.observe(viewLifecycleOwner) {
-            binding.bornYear.text = it.bornYear.toString()
+            binding.bornYear.text = getString(R.string.bornYear, it.bornYear.toString())
             if (it.twitter == "") {
-                binding.twitterLink.text = getString(R.string.account)
+                binding.twitterLink.text = getString(R.string.account_no)
             } else {
-                binding.twitterLink.text = it.twitter
+                binding.twitterLink.text = getString(R.string.account_yes, it.twitter)
             }
-            binding.region.text = it.constituency
+            binding.region.text = getString(R.string.constituency, it.constituency)
         }
-        Log.d("ratingbar", pmRating.value.toString())
 
+        // Storing rating value to live data in onClickListener
         binding.ratingStar.setOnRatingBarChangeListener { _, fl, _ ->
-            if(fl == 0.0F){
+            if (fl == 0.0F) {
                 _pmRating.value = null
-            }else{
+            } else {
                 _pmRating.value = fl
             }
         }
@@ -122,14 +125,16 @@ class DetailFragment : Fragment() {
                     }
 
                 }
-                if(reviewAdded){
+                if (reviewAdded) {
                     // Clearing edit text after review is added
                     binding.comment.text.clear()
+                    // Setting rating star value to 0 after review is submitted
                     binding.ratingStar.rating = minRatingValue
                     _pmRating.value = null
                 }
             }
         }
+
         val bundle = Bundle()
         if (id != null) {
             bundle.putInt("personId", id)
