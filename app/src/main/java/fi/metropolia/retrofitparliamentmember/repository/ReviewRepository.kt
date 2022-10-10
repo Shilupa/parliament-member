@@ -9,10 +9,16 @@ import fi.metropolia.retrofitparliamentmember.model.Review
 import kotlinx.coroutines.launch
 
 /**
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
+/**
  * @param application
  * Used for adding and fetching data to review database
  */
-class ReviewRepository(application: Application): AndroidViewModel(application) {
+class ReviewRepository(application: Application) : AndroidViewModel(application) {
     //Reference of the Dao
     private val reviewDao = ReviewDb.getInstance(application).reviewDao
 
@@ -20,7 +26,7 @@ class ReviewRepository(application: Application): AndroidViewModel(application) 
      * @param review
      * Adding Review to Db
      */
-    fun addReview(review: Review){
+    fun addReview(review: Review) {
         viewModelScope.launch {
             reviewDao.addReview(review)
         }

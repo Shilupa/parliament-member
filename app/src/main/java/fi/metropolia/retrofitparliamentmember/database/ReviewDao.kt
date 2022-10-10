@@ -8,6 +8,12 @@ import androidx.room.Query
 import fi.metropolia.retrofitparliamentmember.model.Review
 
 /**
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
+/**
  * All the queries for review database is done here
  */
 @Dao

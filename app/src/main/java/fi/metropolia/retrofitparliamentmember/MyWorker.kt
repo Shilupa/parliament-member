@@ -7,6 +7,12 @@ import androidx.work.WorkerParameters
 import fi.metropolia.retrofitparliamentmember.viewmodel.ParliamentMemberViewModel
 
 /**
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
+/**
  * Work Manager implementation
  */
 private const val TAG = "MyWorker"
@@ -20,7 +26,7 @@ class MyWorker(private val application: Application, workerParameter: WorkerPara
             Log.d(TAG, "Working now")
             parliamentMemberViewModel = ParliamentMemberViewModel(application)
             Result.success()
-        }catch (throwable: Throwable) {
+        } catch (throwable: Throwable) {
             Log.e(TAG, "Error applying blur")
             Result.failure()
         }

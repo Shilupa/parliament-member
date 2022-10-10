@@ -17,6 +17,12 @@ import fi.metropolia.retrofitparliamentmember.model.Review
 import fi.metropolia.retrofitparliamentmember.viewmodel.ParliamentMemberViewModel
 import fi.metropolia.retrofitparliamentmember.viewmodel.ReviewViewModel
 
+/**
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
 // Parliament members image url base link
 private const val BASE_URL = "https://avoindata.eduskunta.fi/"
 
@@ -45,15 +51,15 @@ class DetailFragment : Fragment() {
 
         // Getting pm details and extras by pm hetekeId passed from previous fragment
         val pmDetails = id?.let { parliamentMemberViewModel.pmRepository.getPmByPmId(it) }
-        val pmExtras = id?.let { parliamentMemberViewModel.pmRepository.getPmExtrasByPmId(id)}
+        val pmExtras = id?.let { parliamentMemberViewModel.pmRepository.getPmExtrasByPmId(id) }
 
         // Displaying parliament members details in UI
         pmDetails?.observe(viewLifecycleOwner) {
             val url: String = BASE_URL + it.pictureUrl
             Glide.with(this).load(url).into(binding.pmImage)
-            if(it.minister){
+            if (it.minister) {
                 binding.memberType.text = getString(R.string.minister)
-            }else{
+            } else {
                 binding.memberType.text = getString(R.string.no_minister)
             }
             binding.region.text = it.party
@@ -62,11 +68,11 @@ class DetailFragment : Fragment() {
         }
 
         // Displaying parliament members extra details in UI
-        pmExtras?.observe(viewLifecycleOwner){
+        pmExtras?.observe(viewLifecycleOwner) {
             binding.bornYear.text = it.bornYear.toString()
-            if(it.twitter == ""){
+            if (it.twitter == "") {
                 binding.twitterLink.text = getString(R.string.account)
-            }else{
+            } else {
                 binding.twitterLink.text = it.twitter
             }
             binding.region.text = it.constituency

@@ -7,6 +7,12 @@ import androidx.room.RoomDatabase
 import fi.metropolia.retrofitparliamentmember.model.Review
 
 /**
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
+/**
  * Instance of review database
  */
 @Database(entities = [Review::class], version = 2, exportSchema = false)

@@ -12,6 +12,12 @@ import fi.metropolia.retrofitparliamentmember.R
 import fi.metropolia.retrofitparliamentmember.model.PmModel
 
 /**
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
+/**
  * Recycler view adapter to display party list
  */
 

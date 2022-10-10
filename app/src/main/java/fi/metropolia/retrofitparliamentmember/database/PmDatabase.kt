@@ -7,6 +7,12 @@ import androidx.room.RoomDatabase
 import fi.metropolia.retrofitparliamentmember.model.PmModel
 
 /**
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
+/**
  * Instance of Parliament members database
  */
 @Database(entities = [(PmModel::class)], version = 11, exportSchema = false)

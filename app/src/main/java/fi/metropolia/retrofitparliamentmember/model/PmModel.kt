@@ -5,6 +5,12 @@ import androidx.room.ForeignKey.CASCADE
 import com.squareup.moshi.Json
 
 /**
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
+/**
  * Model of Parliament members database
  */
 @Entity

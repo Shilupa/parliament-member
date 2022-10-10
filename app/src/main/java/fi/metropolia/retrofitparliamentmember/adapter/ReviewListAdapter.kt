@@ -9,6 +9,12 @@ import fi.metropolia.retrofitparliamentmember.R
 import fi.metropolia.retrofitparliamentmember.model.Review
 
 /**
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
+/**
  * Recycler view adapter to review list
  */
 class ReviewListAdapter(private val reviews: List<Review>) :

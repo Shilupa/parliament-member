@@ -4,8 +4,14 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 /**
-* Model of review database
-*/
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
+/**
+ * Model of review database
+ */
 @Entity
 data class Review(
     @PrimaryKey(autoGenerate = true)

@@ -15,12 +15,19 @@ import fi.metropolia.retrofitparliamentmember.databinding.FragmentReviewListBind
 import fi.metropolia.retrofitparliamentmember.viewmodel.ReviewViewModel
 
 /**
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
+/**
  * Fragment to display review via ReviewListAdapter
  */
 class ReviewListFragment : Fragment() {
     companion object {
         private lateinit var reviewViewModel: ReviewViewModel
     }
+
     private lateinit var binding: FragmentReviewListBinding
     private lateinit var reviewListAdapter: ReviewListAdapter
 
@@ -29,7 +36,7 @@ class ReviewListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_review_list, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_review_list, container, false)
         val personId = arguments?.getInt("personId")
         // Initializing view model
         reviewViewModel = ViewModelProvider(this)[ReviewViewModel::class.java]
@@ -41,7 +48,7 @@ class ReviewListFragment : Fragment() {
          * Passing review list to the Adapter
          */
         if (personId != null) {
-            reviewViewModel.reviewRepo.getAllReviews(personId).observe(viewLifecycleOwner){
+            reviewViewModel.reviewRepo.getAllReviews(personId).observe(viewLifecycleOwner) {
                 reviewListAdapter = ReviewListAdapter(it)
                 binding.reviewListRecyclerView.adapter = reviewListAdapter
             }
