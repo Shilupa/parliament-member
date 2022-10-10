@@ -11,6 +11,12 @@ import retrofit2.http.GET
 private const val BASE_URL = "https://users.metropolia.fi/~peterh/"
 
 /**
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
+/**
  * Creating retrofit service
  */
 private val moshi = Moshi.Builder()
@@ -33,6 +39,7 @@ interface PmApiService {
 }
 
 object PmApi {
-    val retrofitService : PmApiService by lazy {
-        retrofit.create(PmApiService::class.java) }
+    val retrofitService: PmApiService by lazy {
+        retrofit.create(PmApiService::class.java)
+    }
 }

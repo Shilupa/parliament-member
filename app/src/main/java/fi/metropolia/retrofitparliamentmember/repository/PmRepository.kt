@@ -13,6 +13,12 @@ import fi.metropolia.retrofitparliamentmember.model.PmExtrasModel
 import fi.metropolia.retrofitparliamentmember.service.PmApi
 import kotlinx.coroutines.*
 
+/**
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
 private const val TAG = "pmRepo"
 
 /***
@@ -38,7 +44,7 @@ class PmRepository(application: Application) : AndroidViewModel(application) {
         getParliamentMembers()
         // Delete query to clear database
         //viewModelScope.launch {
-          //  pmDatabase.pmDao.deleteAll()
+        //  pmDatabase.pmDao.deleteAll()
         //}
     }
 
@@ -56,8 +62,8 @@ class PmRepository(application: Application) : AndroidViewModel(application) {
                     _fetchedPmList.value?.forEach { pm ->
                         pmDatabase.pmDao.addPmToDB(pm)
                     }
-                    fetchedPmExtrasList.value?.forEach {  pmExtras ->
-                       pmExtrasDb.pmExtrasDao.addPmExtras(pmExtras)
+                    fetchedPmExtrasList.value?.forEach { pmExtras ->
+                        pmExtrasDb.pmExtrasDao.addPmExtras(pmExtras)
                     }
                 }
                 Log.d(

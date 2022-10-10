@@ -8,6 +8,12 @@ import androidx.navigation.fragment.NavHostFragment
 import fi.metropolia.retrofitparliamentmember.databinding.ActivityMainBinding
 import fi.metropolia.retrofitparliamentmember.viewmodel.ParliamentMemberViewModel
 
+/**
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController

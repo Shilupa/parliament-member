@@ -15,6 +15,12 @@ import fi.metropolia.retrofitparliamentmember.databinding.FragmentMainBinding
 import java.util.concurrent.TimeUnit
 
 /**
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
+/**
  * Initial view of the application
  */
 class MainFragment : Fragment() {

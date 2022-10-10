@@ -15,12 +15,19 @@ import fi.metropolia.retrofitparliamentmember.model.PmModel
 import fi.metropolia.retrofitparliamentmember.viewmodel.ParliamentMemberViewModel
 
 /**
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
+/**
  * Fragment to display member list of specific party via MemberListAdapter
  */
 class MemberListFragment : Fragment() {
     companion object {
         private lateinit var parliamentMemberViewModel: ParliamentMemberViewModel
     }
+
     private lateinit var binding: FragmentMemberListBinding
     private lateinit var memberListAdapter: MemberListAdapter
 
@@ -29,7 +36,7 @@ class MemberListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_member_list, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_member_list, container, false)
         // Storing data passed from previous view
         val partyName = arguments?.getString("partyName")
         // Creating mutable list store no duplicates list of parliament members
@@ -44,9 +51,9 @@ class MemberListFragment : Fragment() {
          * Adding pm to the list if he/she belongs to the party passed from previous fragment
          * Passing memberList after adding member to the Adapter
          */
-        parliamentMemberViewModel.getPmList.observe(viewLifecycleOwner){ pmList ->
-            pmList.map{
-                if(it.party == partyName){
+        parliamentMemberViewModel.getPmList.observe(viewLifecycleOwner) { pmList ->
+            pmList.map {
+                if (it.party == partyName) {
                     memberList.add(it)
                 }
             }

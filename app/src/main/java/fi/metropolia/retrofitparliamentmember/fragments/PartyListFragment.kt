@@ -14,12 +14,19 @@ import fi.metropolia.retrofitparliamentmember.databinding.FragmentPartyListBindi
 import fi.metropolia.retrofitparliamentmember.viewmodel.ParliamentMemberViewModel
 
 /**
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
+/**
  * Fragment to display partyList via PartyListAdapter
  */
 class PartyListFragment : Fragment() {
     companion object {
         private lateinit var parliamentMemberViewModel: ParliamentMemberViewModel
     }
+
     private lateinit var binding: FragmentPartyListBinding
     private lateinit var partyListAdapter: PartyListAdapter
 
@@ -28,7 +35,7 @@ class PartyListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding =  DataBindingUtil.inflate(inflater, R.layout.fragment_party_list, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_party_list, container, false)
         //Initializing view model
         parliamentMemberViewModel = ViewModelProvider(this)[ParliamentMemberViewModel::class.java]
         // Implementing RecyclerView
@@ -37,10 +44,10 @@ class PartyListFragment : Fragment() {
         partyListAdapter = PartyListAdapter()
 
         // Passing pmList to the Adapter
-        parliamentMemberViewModel.getPmList.observe(viewLifecycleOwner){ pmList ->
+        parliamentMemberViewModel.getPmList.observe(viewLifecycleOwner) { pmList ->
             partyListAdapter.setData(pmList)
             binding.pmListRecyclerView.adapter = partyListAdapter
         }
-        return  binding.root
+        return binding.root
     }
 }

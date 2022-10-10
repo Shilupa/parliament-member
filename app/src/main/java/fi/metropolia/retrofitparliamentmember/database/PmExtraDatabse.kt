@@ -8,6 +8,12 @@ import fi.metropolia.retrofitparliamentmember.model.PmExtrasModel
 import fi.metropolia.retrofitparliamentmember.model.PmModel
 
 /**
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
+/**
  * Instance of PmExtras database
  */
 @Database(entities = [(PmExtrasModel::class)], version = 1, exportSchema = false)

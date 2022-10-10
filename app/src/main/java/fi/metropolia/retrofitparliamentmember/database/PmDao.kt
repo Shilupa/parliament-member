@@ -8,6 +8,12 @@ import androidx.room.Query
 import fi.metropolia.retrofitparliamentmember.model.PmModel
 
 /**
+ * Shilpa Singh Yadav
+ * 2112616
+ * Date:10.10.2022
+ */
+
+/**
  * All the queries for pm database is done here
  */
 @Dao
@@ -36,5 +42,5 @@ interface PmDao {
      * Deleting parliament members List from database(Just in case on need)
      */
     @Query("DELETE FROM PmModel")
-    suspend  fun deleteAll()
+    suspend fun deleteAll()
 }
