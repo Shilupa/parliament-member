@@ -8,11 +8,22 @@
         android:layout_height="match_parent"
         tools:context=".fragments.ReviewListFragment"
         android:background="@drawable/gradient_background">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/reviewListRecyclerView"
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/review_card_view" />
+            android:orientation="vertical">
+            <TextView
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:text="@string/review"
+                android:textSize="50sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/reviewListRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/review_card_view" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </FrameLayout>
 </layout>

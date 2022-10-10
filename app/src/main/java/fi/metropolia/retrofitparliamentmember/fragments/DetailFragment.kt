@@ -2,12 +2,15 @@ package fi.metropolia.retrofitparliamentmember.fragments
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -36,6 +39,14 @@ class DetailFragment : Fragment() {
     }
 
     private lateinit var binding: FragmentDetailBinding
+
+    // Live data to store rating values
+    private var _pmRating: MutableLiveData<Float?> = MutableLiveData()
+    private val pmRating: LiveData<Float?> = _pmRating
+
+    // Setting minimum rating value
+    private val minRatingValue = 0.0F
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -62,55 +73,68 @@ class DetailFragment : Fragment() {
             } else {
                 binding.memberType.text = getString(R.string.no_minister)
             }
-            binding.region.text = it.party
-            binding.firstName.text = it.firstname
-            binding.lastName.text = it.lastname
+            binding.region.text = getString(R.string.partyName, it.party)
+            binding.pmName.text = getString(R.string.pmName, it.firstname, it.lastname)
         }
 
         // Displaying parliament members extra details in UI
         pmExtras?.observe(viewLifecycleOwner) {
-            binding.bornYear.text = it.bornYear.toString()
+            binding.bornYear.text = getString(R.string.bornYear, it.bornYear.toString())
             if (it.twitter == "") {
-                binding.twitterLink.text = getString(R.string.account)
+                binding.twitterLink.text = getString(R.string.account_no)
             } else {
-                binding.twitterLink.text = it.twitter
+                binding.twitterLink.text = getString(R.string.account_yes, it.twitter)
             }
-            binding.region.text = it.constituency
+            binding.region.text = getString(R.string.constituency, it.constituency)
+        }
+
+        // Storing rating value to live data in onClickListener
+        binding.ratingStar.setOnRatingBarChangeListener { _, fl, _ ->
+            if (fl == 0.0F) {
+                _pmRating.value = null
+            } else {
+                _pmRating.value = fl
+            }
         }
 
         // Review is added through onClickListener when required conditions are met
         binding.submit.setOnClickListener {
-            val rating = binding.rating.text.toString()
             val comment = binding.comment.text.toString()
             // Checking if Edit text field is empty & rating is a number string
-            if (TextUtils.isEmpty(comment) || TextUtils.isEmpty(rating) || rating.toIntOrNull() == null) {
+            if (TextUtils.isEmpty(comment) || pmRating.value == null) {
                 Toast.makeText(
                     requireContext(), "Please fill all the field",
                     Toast.LENGTH_LONG
                 ).show()
             } else {
-                // Checking if rating is less than 1 or greater than 5
-                if (rating.toInt() < 1 || rating.toInt() > 5) {
-                    Toast.makeText(
-                        requireContext(), "Number from 1 to 5 only",
-                        Toast.LENGTH_LONG
-                    ).show()
-                } else {
-                    // If every filed is okay, review is added to review database
+                var reviewAdded = false
+                // If every filed is okay, review is added to review database
+                pmRating.observe(viewLifecycleOwner) {
                     if (id != null) {
-                        val review = Review(0, id, comment, rating.toInt())
-                        reviewViewModel.reviewRepo.addReview(review)
+                        val review =
+                            pmRating.value?.let { rating -> Review(0, id, comment, rating) }
+                        if (review != null) {
+                            reviewViewModel.reviewRepo.addReview(review)
+                        }
+                        reviewAdded = true
                         Toast.makeText(
                             requireContext(), "Review added",
                             Toast.LENGTH_LONG
                         ).show()
-                        // Clearing edit text after review is added
-                        binding.rating.text.clear()
-                        binding.comment.text.clear()
+
                     }
+
+                }
+                if (reviewAdded) {
+                    // Clearing edit text after review is added
+                    binding.comment.text.clear()
+                    // Setting rating star value to 0 after review is submitted
+                    binding.ratingStar.rating = minRatingValue
+                    _pmRating.value = null
                 }
             }
         }
+
         val bundle = Bundle()
         if (id != null) {
             bundle.putInt("personId", id)

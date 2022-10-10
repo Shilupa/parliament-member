@@ -15,7 +15,7 @@ import fi.metropolia.retrofitparliamentmember.model.Review
 /**
  * Instance of review database
  */
-@Database(entities = [Review::class], version = 2, exportSchema = false)
+@Database(entities = [Review::class], version = 3, exportSchema = false)
 abstract class ReviewDb : RoomDatabase() {
     abstract val reviewDao: ReviewDao
 
