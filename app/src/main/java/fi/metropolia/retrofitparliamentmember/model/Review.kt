@@ -18,5 +18,5 @@ data class Review(
     val id: Int,
     val personId: Int,
     val comment: String,
-    val rating: Int
+    val rating: Float
 )

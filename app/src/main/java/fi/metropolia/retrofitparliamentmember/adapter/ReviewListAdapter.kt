@@ -3,6 +3,7 @@ package fi.metropolia.retrofitparliamentmember.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import fi.metropolia.retrofitparliamentmember.R
@@ -28,7 +29,7 @@ class ReviewListAdapter(private val reviews: List<Review>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.review.text = reviews[position].comment
-        holder.rating.text = reviews[position].rating.toString()
+        holder.ratingStar.rating = reviews[position].rating
     }
 
     override fun getItemCount(): Int {
@@ -37,6 +38,6 @@ class ReviewListAdapter(private val reviews: List<Review>) :
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val review: TextView = itemView.findViewById(R.id.review)
-        val rating: TextView = itemView.findViewById(R.id.rating)
+        val ratingStar: RatingBar = itemView.findViewById(R.id.rating)
     }
 }
